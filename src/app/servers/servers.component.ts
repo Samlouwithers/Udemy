@@ -6,10 +6,38 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./servers.component.css']
 })
 export class ServersComponent implements OnInit {
+	allowNewServer = false;
+	serverCreationStatus = "No Server was Created!";
+	serverName = "Testserver";
+	username = "";
+	onEmptyUsername = false;
 
-  constructor() { }
+  constructor() { 
+  	setTimeout(() =>{
+  		this.allowNewServer = true;
+  	},2000)
+  }
 
   ngOnInit() {
   }
+  //new method
+  onCreateServer() {
+  	this.serverCreationStatus = 'Server was Created! ' + this.serverName;
+  }
+  onUpdateServerName(event: Event) {
+  	this.serverName = (<HTMLInputElement>event.target).value;
+  }
+  //Assignment method 
+  onCheckEmptyUsername(event: Event) {
+  	if(this.username == ""){
+  		this.onEmptyUsername = false;
+  	} else {
+  		this.onEmptyUsername = true;
+  	}
+  }
 
+  //clear button
+  onClearInput() {
+  	this.username = "";
+  }
 }
