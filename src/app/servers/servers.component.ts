@@ -8,9 +8,9 @@ import { Component, OnInit } from '@angular/core';
 export class ServersComponent implements OnInit {
 	allowNewServer = false;
 	serverCreationStatus = "No Server was Created!";
-	serverName = "Testserver";
-	username = "";
-	onEmptyUsername = false;
+	serverName = "";
+	serverCreated = false;
+	servers = ['Test Server', 'Test Server 2'];
 
   constructor() { 
   	setTimeout(() =>{
@@ -22,22 +22,12 @@ export class ServersComponent implements OnInit {
   }
   //new method
   onCreateServer() {
+  	this.serverCreated = true;
+  	this.servers.push(this.serverName);
   	this.serverCreationStatus = 'Server was Created! ' + this.serverName;
   }
   onUpdateServerName(event: Event) {
   	this.serverName = (<HTMLInputElement>event.target).value;
   }
-  //Assignment method 
-  onCheckEmptyUsername(event: Event) {
-  	if(this.username == ""){
-  		this.onEmptyUsername = false;
-  	} else {
-  		this.onEmptyUsername = true;
-  	}
-  }
 
-  //clear button
-  onClearInput() {
-  	this.username = "";
-  }
 }

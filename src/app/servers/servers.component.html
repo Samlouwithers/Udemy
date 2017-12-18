@@ -1,8 +1,10 @@
 <label>Server Name</label>
+<!--
 <input 
 	type="text" 
 	class="form-control"
 	(input)="onUpdateServerName($event)">
+	-->
 <input 
 	type="text" 
 	class="form-control"
@@ -14,25 +16,9 @@
 (click)="onCreateServer()"
 >Add Server</button>
 <!--<p [innerText]="allowNewServer"></p>-->
-<p>{{ serverCreationStatus }}</p>
-<app-server></app-server>
-<app-server></app-server>
+<!--<p>{{ serverCreationStatus }}</p>-->
+<p *ngIf="serverCreated; else noServer">Server was created, server name is {{ serverName}}</p>
+
+<app-server *ngFor="let server of servers"></app-server>
 
 <hr>
-<h2>Sam Assignment Test</h2>
-<label>Username</label>
-<input 
-	type="text" 
-	class="form-control"
-	[(ngModel)] = "username"
-	(input)="onCheckEmptyUsername($event)">
-<p>{{username}}</p>
-<button class="btn btn-primary"
-	[disabled]="!onEmptyUsername"
-	(click)="onClearInput()" 
->Clear Username</button>
-
-<button class="btn btn-primary"
-	[disabled]="username === ''"
-	(click)="username = ''"
->Max solution clear username</button>
